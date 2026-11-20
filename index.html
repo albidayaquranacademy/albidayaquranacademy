@@ -1161,6 +1161,83 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Course Syllabus Modal -->
+    <div id="course-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-[#112236] border border-white/15 rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-4 relative shadow-2xl">
+            <button onclick="closeModal('course-modal')" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            <span id="cm-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-[#EAB308]/20 text-[#EAB308]"></span>
+            <h3 id="cm-title" class="font-serif text-2xl text-white"></h3>
+            <p id="cm-meta" class="text-xs text-sky-400 font-semibold"></p>
+            <p id="cm-desc" class="text-sm text-[#B8C7D9]"></p>
+            <div class="pt-2">
+                <p class="text-xs font-bold uppercase tracking-wider text-white mb-2">Key Learning Modules:</p>
+                <ul id="cm-syllabus" class="space-y-1.5 text-xs text-[#B8C7D9] list-disc pl-5"></ul>
+            </div>
+            <button id="cm-register-btn" class="w-full py-3.5 rounded-xl font-bold text-sm bg-white text-[#0E1A2B] hover:bg-slate-100 transition mt-2">
+                Book Free Trial for This Course &rarr;
+            </button>
+        </div>
+    </div>
+
+    <!-- Online Payment Modal (QAR / USD / INR + 15% Family Discount) -->
+    <div id="payment-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-[#112236] border border-white/15 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-4 relative shadow-2xl">
+            <button onclick="closeModal('payment-modal')" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#EAB308]">Secure Tuition Checkout</span>
+            <h3 id="pay-plan-name" class="font-serif text-2xl text-white">Individual Recitation & Tajweed</h3>
+            <p id="pay-plan-amount" class="font-serif text-3xl text-emerald-400">QAR 220</p>
+
+            <div class="flex gap-2">
+                <button type="button" onclick="setPaymentCurrency('QAR')" id="pay-curr-QAR" class="pay-curr-btn flex-1 py-2 rounded-xl font-bold bg-white text-[#0E1A2B] text-xs">QAR</button>
+                <button type="button" onclick="setPaymentCurrency('USD')" id="pay-curr-USD" class="pay-curr-btn flex-1 py-2 rounded-xl font-semibold bg-white/10 text-white text-xs">USD</button>
+                <button type="button" onclick="setPaymentCurrency('INR')" id="pay-curr-INR" class="pay-curr-btn flex-1 py-2 rounded-xl font-semibold bg-white/10 text-white text-xs">INR</button>
+            </div>
+
+            <label class="flex items-center gap-2.5 text-xs text-[#B8C7D9] bg-white/5 p-3 rounded-xl border border-white/10 cursor-pointer">
+                <input type="checkbox" id="sibling-discount-check" onchange="applySiblingDiscount()" class="rounded accent-[#EAB308]">
+                <span>Apply <strong class="text-[#EAB308]">15% Family Sibling Discount</strong> (2+ Children)</span>
+            </label>
+
+            <div>
+                <label class="block text-xs text-[#B8C7D9] mb-1">Student Name</label>
+                <input type="text" id="pay-student-name" placeholder="Enter student full name" class="w-full px-3.5 py-2.5 rounded-xl bg-[#0E1A2B] border border-white/15 text-white text-sm">
+            </div>
+
+            <button onclick="confirmOnlinePayment()" class="w-full py-3.5 rounded-xl font-bold text-sm bg-emerald-600 hover:bg-emerald-500 text-white transition">
+                Proceed to Payment & Invoice &rarr;
+            </button>
+        </div>
+    </div>
+
+    <!-- Role Login Modal -->
+    <div id="login-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-[#112236] border border-white/15 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-4 relative shadow-2xl">
+            <button onclick="closeModal('login-modal')" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="font-serif text-2xl text-white">Portal Sign In</h3>
+            <p class="text-xs text-[#B8C7D9]">Select your role to launch your dashboard immediately.</p>
+            <form onsubmit="handleRoleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs text-[#B8C7D9] mb-1">Account Role</label>
+                    <select id="login-role-select" class="w-full px-3.5 py-3 rounded-xl bg-[#0E1A2B] border border-white/15 text-white text-sm">
+                        <option value="student">Student Portal</option>
+                        <option value="parent">Parent Family Hub</option>
+                        <option value="teacher">Teacher Classroom</option>
+                        <option value="admin">Super Admin Control</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs text-[#B8C7D9] mb-1">Email or Student ID</label>
+                    <input type="text" required value="student@albidayaquran.com" class="w-full px-3.5 py-3 rounded-xl bg-[#0E1A2B] border border-white/15 text-white text-sm">
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-xl font-bold text-sm bg-white text-[#0E1A2B] hover:bg-slate-100 transition">
+                    Access Dashboard &rarr;
+                </button>
+            </form>
+        </div>
+    </div>
+
     <!-- Certificate Modal (World-Class Diploma with Logo, Gold Seal & Print Support) -->
     <div id="certificate-modal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
         <div class="bg-[#112236] border border-white/15 rounded-3xl max-w-4xl w-full p-5 sm:p-7 space-y-5 relative shadow-2xl my-auto">
