@@ -97,21 +97,11 @@
         .group:hover .pinterest-img {
             transform: scale(1.06);
         }
-        /* Fixed Navigation & Sliding White Top Line Indicator */
+        /* Fixed Navigation Link Spacing */
         .nav-link-item {
             position: relative;
             padding-top: 0.5rem;
             padding-bottom: 0.5rem;
-        }
-        #nav-top-line {
-            position: absolute;
-            top: 0;
-            height: 3px;
-            background-color: #FFFFFF;
-            border-radius: 0 0 4px 4px;
-            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.65);
-            transition: left 0.35s cubic-bezier(0.22, 1, 0.36, 1), width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-            pointer-events: none;
         }
         @media print {
             @page {
@@ -150,15 +140,14 @@
                         <img src="logo.png" alt="Al-Bidaya Quran Academy Logo" class="w-full h-full object-contain" onerror="this.parentElement.style.display='none'">
                     </div>
                     <div class="leading-none py-1">
-                        <span class="font-extrabold text-base sm:text-lg tracking-wider text-white">AL-BIDAYA</span>
+                        <span class="font-extrabold text-base sm:text-lg tracking-wider text-white">AL BIDAYA</span>
                         <span class="font-light text-base sm:text-lg tracking-wider text-[#B8C7D9]">ACADEMY</span>
                         <span class="block text-[10px] tracking-[0.22em] uppercase text-[#EAB308] mt-1.5">Read • Find • Think</span>
                     </div>
                 </a>
 
-                <!-- Center Navigation Links with Sliding White Top Indicator Line -->
+                <!-- Center Navigation Links -->
                 <nav id="desktop-nav" class="hidden lg:flex items-center gap-7 text-sm font-medium text-[#B8C7D9] relative h-full">
-                    <span id="nav-top-line"></span>
                     <a href="#home" data-section="home" data-i18n="nav_home" onclick="setActiveNavLink(this)" class="nav-link-item text-white font-semibold hover:text-white transition">Home</a>
                     <a href="#courses" data-section="courses" data-i18n="nav_courses" onclick="setActiveNavLink(this)" class="nav-link-item hover:text-white transition">Courses</a>
                     <a href="#teachers" data-section="teachers" data-i18n="nav_teachers" onclick="setActiveNavLink(this)" class="nav-link-item hover:text-white transition">Teachers</a>
@@ -238,11 +227,11 @@
                     </div>
 
                     <h1 data-i18n="hero_title" class="font-sans font-light text-4xl sm:text-5xl lg:text-[3.5rem] text-white tracking-tight leading-[1.12]">
-                        Al-Bidaya <span class="font-semibold">Quran Academy</span>
+                        Al Bidaya <span class="font-semibold">Quran Academy</span>
                     </h1>
 
                     <p data-i18n="hero_subtitle" class="text-base sm:text-lg text-[#B8C7D9] leading-relaxed max-w-xl font-normal">
-                        At Al-Bidaya Quran Academy (<strong class="text-white font-semibold">Read • Find • Think</strong>), students worldwide learn the Holy Quran and Arabic starting from any level. Join 1,000+ learners studying live with certified Male & Female scholars!
+                        At Al Bidaya Quran Academy (<strong class="text-white font-semibold">Read • Find • Think</strong>), students worldwide learn the Holy Quran and Arabic starting from any level. Join 1,000+ learners studying live with certified Male & Female scholars!
                     </p>
 
                     <div class="flex flex-wrap items-center gap-4 pt-2">
@@ -348,7 +337,7 @@
                 <div class="lg:col-span-6 space-y-6">
                     <div class="flex items-center gap-3">
                         <span class="w-9 h-9 rounded-full border border-[#EAB308]/50 text-[#EAB308] text-xs font-bold flex items-center justify-center">01</span>
-                        <span data-i18n="about_badge" class="text-xs font-bold uppercase tracking-[0.2em] text-sky-400">About Al-Bidaya Quran Academy</span>
+                        <span data-i18n="about_badge" class="text-xs font-bold uppercase tracking-[0.2em] text-sky-400">About Al Bidaya Quran Academy</span>
                     </div>
 
                     <h2 data-i18n="about_title" class="font-serif text-3xl sm:text-4xl lg:text-[2.6rem] text-white leading-tight">
@@ -356,7 +345,7 @@
                     </h2>
 
                     <p data-i18n="about_desc" class="text-sm sm:text-base text-[#B8C7D9] leading-relaxed">
-                        Al-Bidaya Quran Academy connects children, youth, and adults across Qatar, GCC, India, UK, USA, and Europe with certified Male Ustads and Female Ustadhas. We combine classical Tajweed & Hifz accuracy with daily WhatsApp follow-up and free monthly parenting counselling.
+                        Al Bidaya Quran Academy connects children, youth, and adults across Qatar, GCC, India, UK, USA, and Europe with certified Male Ustads and Female Ustadhas. We combine classical Tajweed & Hifz accuracy with daily WhatsApp follow-up and free monthly parenting counselling.
                     </p>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -1015,7 +1004,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 <div class="lg:col-span-7 space-y-5">
                     <span data-i18n="contact_badge" class="text-xs font-bold uppercase tracking-[0.2em] text-[#EAB308]">24/7 International Admissions</span>
-                    <h2 data-i18n="contact_title" class="font-serif text-3xl sm:text-4xl text-white">Connect With Al-Bidaya Quran Academy</h2>
+                    <h2 data-i18n="contact_title" class="font-serif text-3xl sm:text-4xl text-white">Connect With Al Bidaya Quran Academy</h2>
                     <p data-i18n="contact_sub" class="text-sm text-[#B8C7D9] max-w-xl">
                         Have questions about course placement, Male/Female teachers, or tuition in QAR, USD, or INR? Reach our Qatar or India admissions desks anytime.
                     </p>
@@ -1086,12 +1075,12 @@
                     <img src="logo.png" alt="Al-Bidaya Logo" class="w-full h-full object-contain" onerror="this.parentElement.style.display='none'">
                 </div>
                 <div>
-                    <p class="font-bold text-sm text-white tracking-wide">AL-BIDAYA QURAN ACADEMY</p>
+                    <p class="font-bold text-sm text-white tracking-wide">AL BIDAYA QURAN ACADEMY</p>
                     <p class="text-[11px] text-[#EAB308] tracking-widest uppercase mt-0.5">Read • Find • Think</p>
                 </div>
             </div>
             <p class="text-xs text-[#B8C7D9] text-center sm:text-right">
-                © 2026 Al-Bidaya Quran Academy. Qatar (+974 71727802) • India (+91 62381 59862)
+                © 2026 Al Bidaya Quran Academy. Qatar (+974 71727802) • India (+91 62381 59862)
             </p>
         </div>
     </footer>
@@ -1266,7 +1255,7 @@
                             <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white p-2 shadow-md border border-[#C59B27]/40 flex items-center justify-center mb-2">
                                 <img src="logo.png" alt="Al-Bidaya Quran Academy Logo" class="w-full h-full object-contain" onerror="this.parentElement.style.display='none'">
                             </div>
-                            <h4 class="font-extrabold text-sm sm:text-base tracking-[0.28em] uppercase text-[#0E1A2B]">AL-BIDAYA QURAN ACADEMY</h4>
+                            <h4 class="font-extrabold text-sm sm:text-base tracking-[0.28em] uppercase text-[#0E1A2B]">AL BIDAYA QURAN ACADEMY</h4>
                             <p class="text-[10px] sm:text-[11px] font-bold tracking-[0.35em] uppercase text-[#B48418]">READ • FIND • THINK</p>
                         </div>
                         <div class="pt-3">
@@ -1342,8 +1331,8 @@
                 nav_home: 'Home', nav_courses: 'Courses', nav_teachers: 'Teachers',
                 nav_pricing: 'Pricing', nav_portals: 'Dashboards', nav_blog: 'Blog', nav_contact: 'Contact',
                 btn_login: 'Login', btn_registration: 'Registration',
-                hero_title: 'Al-Bidaya <span class="font-semibold">Quran Academy</span>',
-                hero_subtitle: 'At Al-Bidaya Quran Academy (<strong class="text-white font-semibold">Read • Find • Think</strong>), students worldwide learn the Holy Quran and Arabic starting from any level. Join 1,000+ learners studying live with certified Male & Female scholars!',
+                hero_title: 'Al Bidaya <span class="font-semibold">Quran Academy</span>',
+                hero_subtitle: 'At Al Bidaya Quran Academy (<strong class="text-white font-semibold">Read • Find • Think</strong>), students worldwide learn the Holy Quran and Arabic starting from any level. Join 1,000+ learners studying live with certified Male & Female scholars!',
                 hero_cta_primary: 'Registration', hero_cta_secondary: 'Login / Free Trial',
                 hcard1_title: 'Recitation & Tajweed', hcard1_sub: '3 Months • Ages 3–15 • 3 Classes/Wk',
                 hcard2_title: 'Hifz & Tajweed', hcard2_sub: '1 Year Track • Ayah & Juz Monitoring',
@@ -1353,9 +1342,9 @@
                 stats_heading: 'Already at the Academy', stats_sub: 'Live global student & faculty milestones',
                 stat_students: 'Active Students Worldwide', stat_teachers: 'Male & Female Teachers',
                 stat_courses: 'Structured Quran Courses', stat_countries: 'Countries Reached',
-                about_badge: 'About Al-Bidaya Quran Academy',
+                about_badge: 'About Al Bidaya Quran Academy',
                 about_title: 'Read • Find • Think — Global Quranic Mentorship',
-                about_desc: 'Al-Bidaya Quran Academy connects children, youth, and adults across Qatar, GCC, India, UK, USA, and Europe with certified Male Ustads and Female Ustadhas. We combine classical Tajweed & Hifz accuracy with daily WhatsApp follow-up and free monthly parenting counselling.',
+                about_desc: 'Al Bidaya Quran Academy connects children, youth, and adults across Qatar, GCC, India, UK, USA, and Europe with certified Male Ustads and Female Ustadhas. We combine classical Tajweed & Hifz accuracy with daily WhatsApp follow-up and free monthly parenting counselling.',
                 about_f1_title: 'Daily WhatsApp Follow-Up', about_f1_desc: 'Daily audio recitation checks & personalized feedback.',
                 about_f2_title: 'Free Parenting Counselling', about_f2_desc: 'Monthly guidance sessions for parents & students.',
                 courses_badge: 'Curriculum & Programmes',
@@ -1398,7 +1387,7 @@
                 portals_sub: 'Switch between Student, Parent, Teacher, and Super Admin views below.',
                 role_student: 'Student', role_parent: 'Parent', role_teacher: 'Teacher', role_admin: 'Admin Control',
                 blog_badge: 'Read • Find • Think Journal', blog_title: 'Parenting Guides & Quran Learning Tips',
-                contact_badge: '24/7 International Admissions', contact_title: 'Connect With Al-Bidaya Quran Academy',
+                contact_badge: '24/7 International Admissions', contact_title: 'Connect With Al Bidaya Quran Academy',
                 contact_sub: 'Have questions about course placement, Male/Female teachers, or tuition in QAR, USD, or INR? Reach our Qatar or India admissions desks anytime.',
                 card_syllabus: 'Syllabus', card_trial: 'Free Trial', verified_tag: 'Verified'
             },
@@ -1573,29 +1562,15 @@
             renderAdditionalCourses();
             const activeTeacherFilter = document.querySelector('.tfilter-btn.bg-white')?.id?.replace('tfilter-', '') || 'all';
             renderTeachers(activeTeacherFilter);
-            const activeNav = document.querySelector('.nav-link-item.text-white') || document.querySelector('.nav-link-item');
-            setTimeout(() => moveNavTopLine(activeNav), 50);
         }
 
-        // Fixed Navigation Sliding White Top Line Logic
-        function moveNavTopLine(linkEl) {
-            const line = document.getElementById('nav-top-line');
-            const nav = document.getElementById('desktop-nav');
-            if (!line || !nav || !linkEl) return;
-            const navRect = nav.getBoundingClientRect();
-            const linkRect = linkEl.getBoundingClientRect();
-            if (linkRect.width === 0) return;
-            line.style.left = `${linkRect.left - navRect.left}px`;
-            line.style.width = `${linkRect.width}px`;
-        }
-
+        // Fixed Navigation Active Link Highlight
         function setActiveNavLink(linkEl) {
             if (!linkEl) return;
             document.querySelectorAll('.nav-link-item').forEach(item => {
                 item.classList.remove('text-white', 'font-semibold');
             });
             linkEl.classList.add('text-white', 'font-semibold');
-            moveNavTopLine(linkEl);
         }
 
         window.addEventListener('scroll', () => {
@@ -2243,7 +2218,6 @@
         updatePricingDisplay();
         updateConvertedTimings();
         startImpactCounters();
-        setTimeout(() => moveNavTopLine(document.querySelector('.nav-link-item')), 100);
     </script>
 </body>
 </html>
