@@ -114,8 +114,16 @@
             pointer-events: none;
         }
         @media print {
+            @page {
+                size: landscape;
+                margin: 0.4in;
+            }
             body * { visibility: hidden; }
-            #certificate-printable, #certificate-printable * { visibility: visible; }
+            #certificate-printable, #certificate-printable * {
+                visibility: visible;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
             #certificate-printable {
                 position: fixed;
                 left: 0;
@@ -123,6 +131,7 @@
                 width: 100%;
                 height: 100%;
                 margin: 0;
+                border-radius: 0 !important;
             }
         }
     </style>
@@ -1152,91 +1161,91 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Course Syllabus Modal -->
-    <div id="course-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-[#112236] border border-white/15 rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-4 relative">
-            <button onclick="closeModal('course-modal')" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-            <span id="cm-badge" class="px-3 py-1 rounded-full text-[11px] font-bold bg-[#EAB308]/20 text-[#EAB308]"></span>
-            <h3 id="cm-title" class="font-serif text-2xl text-white"></h3>
-            <p id="cm-meta" class="text-xs text-sky-400 font-semibold"></p>
-            <p id="cm-desc" class="text-xs text-[#B8C7D9] leading-relaxed"></p>
-            <div>
-                <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-2">Key Learning Modules:</h4>
-                <ul id="cm-syllabus" class="list-disc list-inside space-y-1.5 text-xs text-[#B8C7D9]"></ul>
+    <!-- Certificate Modal (World-Class Diploma with Logo, Gold Seal & Print Support) -->
+    <div id="certificate-modal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-[#112236] border border-white/15 rounded-3xl max-w-4xl w-full p-5 sm:p-7 space-y-5 relative shadow-2xl my-auto">
+            <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-widest text-[#EAB308]"><i class="fa-solid fa-award mr-1.5"></i> Official Academic Credential</span>
+                <button onclick="closeModal('certificate-modal')" class="w-9 h-9 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center transition"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <button id="cm-register-btn" class="w-full py-3 rounded-xl font-bold text-xs bg-white text-[#0E1A2B] hover:bg-slate-100 transition mt-2">
-                Book Free Trial for This Course &rarr;
-            </button>
-        </div>
-    </div>
 
-    <!-- Online Payment Modal (QAR / USD / INR) -->
-    <div id="payment-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-[#112236] border border-white/15 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-4 relative">
-            <button onclick="closeModal('payment-modal')" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-            <span class="text-xs font-bold uppercase tracking-wider text-[#EAB308]">Online Tuition Checkout</span>
-            <h3 id="pay-plan-name" class="font-serif text-2xl text-white">Individual Recitation & Tajweed</h3>
-            <div class="flex gap-2">
-                <button type="button" id="pay-curr-QAR" onclick="setPaymentCurrency('QAR')" class="pay-curr-btn flex-1 py-2 rounded-xl font-bold bg-white text-[#0E1A2B] text-xs">QAR</button>
-                <button type="button" id="pay-curr-USD" onclick="setPaymentCurrency('USD')" class="pay-curr-btn flex-1 py-2 rounded-xl font-semibold bg-white/10 text-white text-xs">USD</button>
-                <button type="button" id="pay-curr-INR" onclick="setPaymentCurrency('INR')" class="pay-curr-btn flex-1 py-2 rounded-xl font-semibold bg-white/10 text-white text-xs">INR (₹)</button>
-            </div>
-            <div class="p-4 rounded-2xl bg-[#0E1A2B] border border-white/10 flex items-center justify-between">
-                <span class="text-xs text-[#B8C7D9]">Total Tuition Payable:</span>
-                <span id="pay-plan-amount" class="font-serif text-2xl text-white">QAR 220</span>
-            </div>
-            <label class="flex items-center gap-2.5 text-xs text-[#B8C7D9] cursor-pointer">
-                <input type="checkbox" id="sibling-discount-check" onchange="applySiblingDiscount()" class="rounded accent-[#EAB308]">
-                <span>Apply 15% Family Sibling Discount (2+ Children)</span>
-            </label>
-            <input type="text" id="pay-student-name" placeholder="Enter Student Full Name" class="w-full px-4 py-3 rounded-xl bg-[#0E1A2B] border border-white/15 text-white text-xs">
-            <button type="button" onclick="confirmOnlinePayment()" class="w-full py-3.5 rounded-xl font-bold text-xs bg-emerald-500 hover:bg-emerald-400 text-white transition">
-                Proceed to Payment & Receipt via WhatsApp &rarr;
-            </button>
-        </div>
-    </div>
+            <!-- Printable World-Class Certificate Canvas -->
+            <div id="certificate-printable" class="relative p-6 sm:p-10 rounded-2xl bg-[#FFFDF7] text-[#0E1A2B] border-[6px] border-[#0E1A2B] shadow-2xl overflow-hidden">
+                <!-- Inner Ornamental Gold Double Frame -->
+                <div class="border-2 border-[#C59B27] p-6 sm:p-10 relative flex flex-col justify-between min-h-[470px]">
+                    <!-- Decorative Corner Ornaments -->
+                    <span class="absolute top-2 left-2 w-6 h-6 border-t-4 border-l-4 border-[#0E1A2B]"></span>
+                    <span class="absolute top-2 right-2 w-6 h-6 border-t-4 border-r-4 border-[#0E1A2B]"></span>
+                    <span class="absolute bottom-2 left-2 w-6 h-6 border-b-4 border-l-4 border-[#0E1A2B]"></span>
+                    <span class="absolute bottom-2 right-2 w-6 h-6 border-b-4 border-r-4 border-[#0E1A2B]"></span>
 
-    <!-- Role Login Modal -->
-    <div id="login-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-[#112236] border border-white/15 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-4 relative">
-            <button onclick="closeModal('login-modal')" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-            <h3 class="font-serif text-2xl text-white">Academy Portal Login</h3>
-            <p class="text-xs text-[#B8C7D9]">Select your portal role to preview or access your dashboard.</p>
-            <form onsubmit="handleRoleLogin(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs text-[#B8C7D9] mb-1">Portal Role</label>
-                    <select id="login-role-select" class="w-full px-4 py-3 rounded-xl bg-[#0E1A2B] border border-white/15 text-white text-xs">
-                        <option value="student">Student Portal</option>
-                        <option value="parent">Parent Portal</option>
-                        <option value="teacher">Teacher Portal</option>
-                        <option value="admin">Super Admin Portal</option>
-                    </select>
+                    <!-- Faint Background Watermark Logo -->
+                    <img src="logo.png" alt="" class="absolute inset-0 m-auto w-72 h-72 object-contain opacity-[0.05] pointer-events-none" onerror="this.style.display='none'">
+
+                    <!-- Top Header: Arabic Basmalah + Official Logo + Academy Title -->
+                    <div class="text-center space-y-2 relative z-10">
+                        <p class="font-arabic text-lg sm:text-xl text-[#8C6D1F]">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+                        <div class="flex flex-col items-center justify-center pt-1">
+                            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white p-2 shadow-md border border-[#C59B27]/40 flex items-center justify-center mb-2">
+                                <img src="logo.png" alt="Al-Bidaya Quran Academy Logo" class="w-full h-full object-contain" onerror="this.parentElement.style.display='none'">
+                            </div>
+                            <h4 class="font-extrabold text-sm sm:text-base tracking-[0.28em] uppercase text-[#0E1A2B]">AL-BIDAYA QURAN ACADEMY</h4>
+                            <p class="text-[10px] sm:text-[11px] font-bold tracking-[0.35em] uppercase text-[#B48418]">READ • FIND • THINK</p>
+                        </div>
+                        <div class="pt-3">
+                            <h3 class="font-serif text-3xl sm:text-5xl font-bold text-[#0E1A2B] tracking-tight">Certificate of Achievement</h3>
+                            <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-[#C59B27] to-transparent mx-auto mt-2"></div>
+                        </div>
+                    </div>
+
+                    <!-- Center Citation & Student Name -->
+                    <div class="text-center space-y-2.5 my-6 relative z-10">
+                        <p class="text-xs sm:text-sm uppercase tracking-[0.2em] text-slate-600 font-semibold">This is proudly presented to</p>
+                        <p id="cert-student-name" class="font-serif italic text-3xl sm:text-5xl font-bold text-[#0E1A2B] border-b-2 border-[#C59B27]/60 inline-block px-8 pb-1.5">Amina Rahman</p>
+                        <p class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto pt-1">
+                            in recognition of dedication, exemplary Tajweed accuracy, and successful completion of the prescribed curriculum in
+                        </p>
+                        <p id="cert-course-name" class="font-serif text-xl sm:text-2xl font-bold text-[#B48418]">Recitation & Tajweed Level 1</p>
+                    </div>
+
+                    <!-- Bottom Verification Footer: Signatures + Official Gold Seal + Serial ID -->
+                    <div class="grid grid-cols-3 items-end gap-4 pt-4 border-t border-[#C59B27]/40 relative z-10 text-center">
+                        <div>
+                            <p class="font-serif italic text-base sm:text-lg text-[#0E1A2B]">Ustad Abdul Rahman</p>
+                            <div class="w-32 sm:w-40 h-px bg-slate-400 mx-auto my-1"></div>
+                            <p class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-600">Academic Director</p>
+                        </div>
+
+                        <!-- Official Gold Emblem Seal -->
+                        <div class="flex flex-col items-center justify-center">
+                            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-[#FDE047] via-[#EAB308] to-[#B48418] p-1 shadow-lg flex items-center justify-center">
+                                <div class="w-full h-full rounded-full border-2 border-dashed border-[#0E1A2B] flex flex-col items-center justify-center text-[#0E1A2B] leading-tight">
+                                    <i class="fa-solid fa-star-and-crescent text-xs sm:text-sm"></i>
+                                    <span class="text-[7px] sm:text-[8px] font-extrabold uppercase tracking-wider mt-0.5">VERIFIED</span>
+                                    <span class="text-[6px] sm:text-[7px] font-bold">ACADEMY SEAL</span>
+                                </div>
+                            </div>
+                            <span id="cert-serial-id" class="text-[9px] font-mono text-slate-500 mt-1.5">ID: ABQ-2026-8841</span>
+                        </div>
+
+                        <div>
+                            <p id="cert-issue-date" class="font-serif text-sm sm:text-base font-semibold text-[#0E1A2B]">November 20, 2026</p>
+                            <div class="w-32 sm:w-40 h-px bg-slate-400 mx-auto my-1"></div>
+                            <p class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-600">Date of Issue • Doha / India</p>
+                        </div>
+                    </div>
                 </div>
-                <input type="email" required value="student@albidayaquran.com" class="w-full px-4 py-3 rounded-xl bg-[#0E1A2B] border border-white/15 text-white text-xs">
-                <input type="password" required value="••••••••" class="w-full px-4 py-3 rounded-xl bg-[#0E1A2B] border border-white/15 text-white text-xs">
-                <button type="submit" class="w-full py-3 rounded-xl font-bold text-xs bg-white text-[#0E1A2B] hover:bg-slate-100 transition">Enter Dashboard &rarr;</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Certificate Modal -->
-    <div id="certificate-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-[#112236] border border-white/15 rounded-3xl max-w-xl w-full p-6 space-y-4 relative">
-            <button onclick="closeModal('certificate-modal')" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-            <div id="certificate-printable" class="p-8 rounded-2xl bg-gradient-to-br from-[#0E1A2B] via-[#172C46] to-[#0E1A2B] border-2 border-[#EAB308] text-center space-y-3">
-                <p class="text-[11px] uppercase tracking-[0.3em] text-[#EAB308] font-bold">Al-Bidaya Quran Academy</p>
-                <h3 class="font-serif text-3xl text-white">Certificate of Achievement</h3>
-                <p class="text-xs text-[#B8C7D9]">This certifies that</p>
-                <p id="cert-student-name" class="font-serif italic text-2xl text-[#EAB308]">Amina Rahman</p>
-                <p class="text-xs text-[#B8C7D9]">has successfully completed</p>
-                <p id="cert-course-name" class="font-bold text-base text-white">Recitation & Tajweed Level 1</p>
-                <p class="text-[11px] text-[#B8C7D9] pt-3">Read • Find • Think • Verified International Academic Board</p>
             </div>
-            <button onclick="window.print()" class="w-full py-3 rounded-xl font-bold text-xs bg-[#EAB308] text-[#0E1A2B] hover:bg-[#FDE047] transition">
-                <i class="fa-solid fa-print mr-1.5"></i> Print / Save as PDF Certificate
-            </button>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button onclick="window.print()" class="flex-1 py-3.5 px-5 rounded-xl font-bold text-xs bg-[#EAB308] text-[#0E1A2B] hover:bg-[#FDE047] transition shadow-lg">
+                    <i class="fa-solid fa-print mr-1.5"></i> Print / Save as High-Res PDF Certificate
+                </button>
+                <button onclick="closeModal('certificate-modal')" class="py-3.5 px-6 rounded-xl font-semibold text-xs bg-white/10 hover:bg-white/20 text-white border border-white/15 transition">
+                    Close
+                </button>
+            </div>
         </div>
     </div>
 
@@ -2058,6 +2067,14 @@
         function openCertificateModal(student, course) {
             document.getElementById('cert-student-name').textContent = student;
             document.getElementById('cert-course-name').textContent = course;
+            const dateEl = document.getElementById('cert-issue-date');
+            if (dateEl) {
+                dateEl.textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            }
+            const serialEl = document.getElementById('cert-serial-id');
+            if (serialEl) {
+                serialEl.textContent = 'ID: ABQ-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
+            }
             document.getElementById('certificate-modal')?.classList.remove('hidden');
         }
 
