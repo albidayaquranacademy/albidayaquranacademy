@@ -97,6 +97,22 @@
         .group:hover .pinterest-img {
             transform: scale(1.06);
         }
+        /* Fixed Navigation & Sliding White Top Line Indicator */
+        .nav-link-item {
+            position: relative;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        #nav-top-line {
+            position: absolute;
+            top: 0;
+            height: 3px;
+            background-color: #FFFFFF;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.65);
+            transition: left 0.35s cubic-bezier(0.22, 1, 0.36, 1), width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            pointer-events: none;
+        }
         @media print {
             body * { visibility: hidden; }
             #certificate-printable, #certificate-printable * { visibility: visible; }
@@ -108,97 +124,97 @@
                 height: 100%;
                 margin: 0;
             }
-        }
-    </style>
-</head>
-<body class="bg-[#0E1A2B] text-white font-sans antialiased selection:bg-[#EAB308] selection:text-[#0E1A2B]">
+<body class="bg-[#0E1A2B] text-white font-sans antialiased selection:bg-[#EAB308] selection:text-[#0E1A2B] pt-[6.5rem]">
 
     <!-- ===================================================================== -->
-    <!-- HERO & TOP NAVIGATION                                                 -->
+    <!-- FIXED TOP NAVIGATION BAR (STAYS LOCKED AT TOP + SLIDING WHITE LINE)   -->
+    <!-- ===================================================================== -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#1B3047]/95 backdrop-blur-md border-b border-white/10 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center min-h-[6.5rem] py-3.5">
+                <!-- Brand Wordmark & Logo (Loads directly from root logo.png) -->
+                <a href="#home" onclick="setActiveNavLink(document.querySelector('.nav-link-item'))" class="flex items-center gap-3.5 py-2 my-1 group">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white p-2 shadow-lg shrink-0 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                        <img src="logo.png" alt="Al-Bidaya Quran Academy Logo" class="w-full h-full object-contain" onerror="this.parentElement.style.display='none'">
+                    </div>
+                    <div class="leading-none py-1">
+                        <span class="font-extrabold text-base sm:text-lg tracking-wider text-white">AL-BIDAYA</span>
+                        <span class="font-light text-base sm:text-lg tracking-wider text-[#B8C7D9]">ACADEMY</span>
+                        <span class="block text-[10px] tracking-[0.22em] uppercase text-[#EAB308] mt-1.5">Read • Find • Think</span>
+                    </div>
+                </a>
+
+                <!-- Center Navigation Links with Sliding White Top Indicator Line -->
+                <nav id="desktop-nav" class="hidden lg:flex items-center gap-7 text-sm font-medium text-[#B8C7D9] relative h-full">
+                    <span id="nav-top-line"></span>
+                    <a href="#home" data-section="home" data-i18n="nav_home" onclick="setActiveNavLink(this)" class="nav-link-item text-white font-semibold hover:text-white transition">Home</a>
+                    <a href="#courses" data-section="courses" data-i18n="nav_courses" onclick="setActiveNavLink(this)" class="nav-link-item hover:text-white transition">Courses</a>
+                    <a href="#teachers" data-section="teachers" data-i18n="nav_teachers" onclick="setActiveNavLink(this)" class="nav-link-item hover:text-white transition">Teachers</a>
+                    <a href="#pricing" data-section="pricing" data-i18n="nav_pricing" onclick="setActiveNavLink(this)" class="nav-link-item hover:text-white transition">Pricing</a>
+                    <a href="#dashboards" data-section="dashboards" data-i18n="nav_portals" onclick="setActiveNavLink(this)" class="nav-link-item hover:text-white transition">Dashboards</a>
+                    <a href="#blog" data-section="blog" data-i18n="nav_blog" onclick="setActiveNavLink(this)" class="nav-link-item hover:text-white transition">Blog</a>
+                    <a href="#contact" data-section="contact" data-i18n="nav_contact" onclick="setActiveNavLink(this)" class="nav-link-item hover:text-white transition">Contact</a>
+                </nav>
+
+                <!-- Right Actions: Language Switcher (EN/ML/AR), Login, and White Pill Registration -->
+                <div class="hidden sm:flex items-center gap-3.5">
+                    <div class="flex items-center gap-1 bg-white/10 rounded-full px-2 py-1 border border-white/15 text-xs">
+                        <i class="fa-solid fa-globe text-[#B8C7D9] mx-1"></i>
+                        <button onclick="setLanguage('en')" id="lang-en" class="lang-btn px-2 py-0.5 rounded-full font-bold bg-white text-[#0E1A2B] transition">EN</button>
+                        <button onclick="setLanguage('ml')" id="lang-ml" class="lang-btn px-2 py-0.5 rounded-full font-medium text-[#B8C7D9] hover:text-white transition">ML</button>
+                        <button onclick="setLanguage('ar')" id="lang-ar" class="lang-btn px-2 py-0.5 rounded-full font-medium text-[#B8C7D9] hover:text-white transition">AR</button>
+                    </div>
+
+                    <button onclick="openLoginModal()" data-i18n="btn_login" class="px-3.5 py-2 text-sm font-medium text-white/90 hover:text-white transition">
+                        Login
+                    </button>
+
+                    <a href="#registration" data-i18n="btn_registration" class="px-5 py-2.5 rounded-xl text-sm font-bold bg-white text-[#0E1A2B] hover:bg-[#F1F5F9] shadow-lg transition">
+                        Registration
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2.5 rounded-xl text-white hover:bg-white/10" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-[#0E1A2B] border-t border-white/10 px-4 pt-3 pb-6 space-y-2">
+            <div class="flex items-center justify-between px-3 py-2 border-b border-white/10 mb-2">
+                <span class="text-xs text-[#B8C7D9]">Language:</span>
+                <div class="flex gap-1.5">
+                    <button onclick="setLanguage('en')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-white text-[#0E1A2B]">English</button>
+                    <button onclick="setLanguage('ml')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-white/10 text-white">മലയാളം</button>
+                    <button onclick="setLanguage('ar')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-white/10 text-white">العربية</button>
+                </div>
+            </div>
+            <a href="#home" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-white hover:bg-white/10">Home</a>
+            <a href="#courses" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-[#B8C7D9] hover:bg-white/10">Our Courses</a>
+            <a href="#teachers" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-[#B8C7D9] hover:bg-white/10">Our Teachers</a>
+            <a href="#pricing" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-[#B8C7D9] hover:bg-white/10">Pricing & Packages</a>
+            <a href="#dashboards" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-[#B8C7D9] hover:bg-white/10">Student / Parent / Teacher / Admin Portals</a>
+            <a href="#blog" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-[#B8C7D9] hover:bg-white/10">Blog & Parenting Tips</a>
+            <a href="#contact" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-[#B8C7D9] hover:bg-white/10">Contact Us</a>
+            <div class="pt-3 flex gap-3 border-t border-white/10">
+                <button onclick="openLoginModal(); document.getElementById('mobile-menu').classList.add('hidden');" class="flex-1 py-3 rounded-xl font-semibold text-sm text-white border border-white/25">
+                    Login
+                </button>
+                <a href="#registration" class="mobile-link flex-1 text-center py-3 rounded-xl font-bold text-sm bg-white text-[#0E1A2B]">
+                    Registration
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===================================================================== -->
+    <!-- HERO SECTION                                                          -->
     <!-- ===================================================================== -->
     <div class="relative overflow-hidden bg-gradient-to-b from-[#3A5A7C] via-[#20364F] to-[#0E1A2B]">
         <!-- Root Hero Background Image (hero-bg.jpg) -->
         <img src="hero-bg.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-luminosity pointer-events-none" onerror="this.style.display='none'">
-
-        <!-- Sticky Top Navigation Bar (Generous Top & Bottom Space for Logo) -->
-        <header class="sticky top-0 z-40 bg-[#1B3047]/85 backdrop-blur-md border-b border-white/10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center min-h-[6.5rem] py-3.5">
-                    <!-- Brand Wordmark & Logo (Loads directly from root logo.png) -->
-                    <a href="#home" class="flex items-center gap-3.5 py-2 my-1 group">
-                        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white p-2 shadow-lg shrink-0 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                            <img src="logo.png" alt="Al-Bidaya Quran Academy Logo" class="w-full h-full object-contain" onerror="this.parentElement.style.display='none'">
-                        </div>
-                        <div class="leading-none py-1">
-                            <span class="font-extrabold text-base sm:text-lg tracking-wider text-white">AL-BIDAYA</span>
-                            <span class="font-light text-base sm:text-lg tracking-wider text-[#B8C7D9]">ACADEMY</span>
-                            <span class="block text-[10px] tracking-[0.22em] uppercase text-[#EAB308] mt-1.5">Read • Find • Think</span>
-                        </div>
-                    </a>
-
-                    <!-- Center Navigation Links -->
-                    <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-[#B8C7D9]">
-                        <a href="#home" data-i18n="nav_home" class="text-white hover:text-[#EAB308] transition">Home</a>
-                        <a href="#courses" data-i18n="nav_courses" class="hover:text-white transition">Courses</a>
-                        <a href="#teachers" data-i18n="nav_teachers" class="hover:text-white transition">Teachers</a>
-                        <a href="#pricing" data-i18n="nav_pricing" class="hover:text-white transition">Pricing</a>
-                        <a href="#dashboards" data-i18n="nav_portals" class="hover:text-white transition">Dashboards</a>
-                        <a href="#blog" data-i18n="nav_blog" class="hover:text-white transition">Blog</a>
-                        <a href="#contact" data-i18n="nav_contact" class="hover:text-white transition">Contact</a>
-                    </nav>
-
-                    <!-- Right Actions: Language Switcher (EN/ML/AR), Login, and White Pill Registration -->
-                    <div class="hidden sm:flex items-center gap-3.5">
-                        <div class="flex items-center gap-1 bg-white/10 rounded-full px-2 py-1 border border-white/15 text-xs">
-                            <i class="fa-solid fa-globe text-[#B8C7D9] mx-1"></i>
-                            <button onclick="setLanguage('en')" id="lang-en" class="lang-btn px-2 py-0.5 rounded-full font-bold bg-white text-[#0E1A2B] transition">EN</button>
-                            <button onclick="setLanguage('ml')" id="lang-ml" class="lang-btn px-2 py-0.5 rounded-full font-medium text-[#B8C7D9] hover:text-white transition">ML</button>
-                            <button onclick="setLanguage('ar')" id="lang-ar" class="lang-btn px-2 py-0.5 rounded-full font-medium text-[#B8C7D9] hover:text-white transition">AR</button>
-                        </div>
-
-                        <button onclick="openLoginModal()" data-i18n="btn_login" class="px-3.5 py-2 text-sm font-medium text-white/90 hover:text-white transition">
-                            Login
-                        </button>
-
-                        <a href="#registration" data-i18n="btn_registration" class="px-5 py-2.5 rounded-xl text-sm font-bold bg-white text-[#0E1A2B] hover:bg-[#F1F5F9] shadow-lg transition">
-                            Registration
-                        </a>
-                    </div>
-
-                    <!-- Mobile Menu Toggle -->
-                    <button id="mobile-menu-btn" class="lg:hidden p-2.5 rounded-xl text-white hover:bg-white/10" aria-label="Toggle Menu">
-                        <i class="fa-solid fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile Navigation Drawer -->
-            <div id="mobile-menu" class="hidden lg:hidden bg-[#0E1A2B] border-t border-white/10 px-4 pt-3 pb-6 space-y-2">
-                <div class="flex items-center justify-between px-3 py-2 border-b border-white/10 mb-2">
-                    <span class="text-xs text-[#B8C7D9]">Language:</span>
-                    <div class="flex gap-1.5">
-                        <button onclick="setLanguage('en')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-white text-[#0E1A2B]">English</button>
-                        <button onclick="setLanguage('ml')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-white/10 text-white">മലയാളം</button>
-                        <button onclick="setLanguage('ar')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-white/10 text-white">العربية</button>
-                    </div>
-                </div>
-                <a href="#home" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-white hover:bg-white/10">Home</a>
-                <a href="#courses" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-[#B8C7D9] hover:bg-white/10">Our Courses</a>
-                <a href="#teachers" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-[#B8C7D9] hover:bg-white/10">Our Teachers</a>
-                <a href="#pricing" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-[#B8C7D9] hover:bg-white/10">Pricing & Packages</a>
-                <a href="#dashboards" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-[#B8C7D9] hover:bg-white/10">Student / Parent / Teacher / Admin Portals</a>
-                <a href="#blog" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-[#B8C7D9] hover:bg-white/10">Blog & Parenting Tips</a>
-                <a href="#contact" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-medium text-[#B8C7D9] hover:bg-white/10">Contact Us</a>
-                <div class="pt-3 flex gap-3 border-t border-white/10">
-                    <button onclick="openLoginModal(); document.getElementById('mobile-menu').classList.add('hidden');" class="flex-1 py-3 rounded-xl font-semibold text-sm text-white border border-white/25">
-                        Login
-                    </button>
-                    <a href="#registration" class="mobile-link flex-1 text-center py-3 rounded-xl font-bold text-sm bg-white text-[#0E1A2B]">
-                        Registration
-                    </a>
-                </div>
-            </div>
-        </header>
 
         <!-- HERO SECTION -->
         <section id="home" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-16 lg:pt-20 lg:pb-24">
@@ -1468,7 +1484,50 @@
             renderAdditionalCourses();
             const activeTeacherFilter = document.querySelector('.tfilter-btn.bg-white')?.id?.replace('tfilter-', '') || 'all';
             renderTeachers(activeTeacherFilter);
+            const activeNav = document.querySelector('.nav-link-item.text-white') || document.querySelector('.nav-link-item');
+            setTimeout(() => moveNavTopLine(activeNav), 50);
         }
+
+        // Fixed Navigation Sliding White Top Line Logic
+        function moveNavTopLine(linkEl) {
+            const line = document.getElementById('nav-top-line');
+            const nav = document.getElementById('desktop-nav');
+            if (!line || !nav || !linkEl) return;
+            const navRect = nav.getBoundingClientRect();
+            const linkRect = linkEl.getBoundingClientRect();
+            if (linkRect.width === 0) return;
+            line.style.left = `${linkRect.left - navRect.left}px`;
+            line.style.width = `${linkRect.width}px`;
+        }
+
+        function setActiveNavLink(linkEl) {
+            if (!linkEl) return;
+            document.querySelectorAll('.nav-link-item').forEach(item => {
+                item.classList.remove('text-white', 'font-semibold');
+            });
+            linkEl.classList.add('text-white', 'font-semibold');
+            moveNavTopLine(linkEl);
+        }
+
+        window.addEventListener('scroll', () => {
+            const sections = ['home', 'courses', 'teachers', 'pricing', 'dashboards', 'blog', 'contact'];
+            const scrollPos = window.scrollY + 180;
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const sec = document.getElementById(sections[i]);
+                if (sec && sec.offsetTop <= scrollPos) {
+                    const targetLink = document.querySelector(`.nav-link-item[data-section="${sections[i]}"]`);
+                    if (targetLink && !targetLink.classList.contains('text-white')) {
+                        setActiveNavLink(targetLink);
+                    }
+                    break;
+                }
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            const activeNav = document.querySelector('.nav-link-item.text-white') || document.querySelector('.nav-link-item');
+            moveNavTopLine(activeNav);
+        });
 
         // 0 to 1,000+ Immediate Running Counter
         function startImpactCounters() {
@@ -2087,6 +2146,7 @@
         updatePricingDisplay();
         updateConvertedTimings();
         startImpactCounters();
+        setTimeout(() => moveNavTopLine(document.querySelector('.nav-link-item')), 100);
     </script>
 </body>
 </html>
