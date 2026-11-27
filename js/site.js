@@ -6,3 +6,30 @@ function setupEnquiry(formId){const f=document.getElementById(formId);if(!f)retu
 const currencyRates={INR:{rate:25.4,symbol:"₹",digits:0},USD:{rate:1/3.64,symbol:"$",digits:2},QAR:{rate:1,symbol:"QAR ",digits:0}};
 function setupCurrency(){const sel=document.getElementById("currency");if(!sel)return;function update(){const c=currencyRates[sel.value];document.querySelectorAll("[data-qar]").forEach(el=>{const n=Number(el.dataset.qar)*c.rate;el.textContent=c.symbol+new Intl.NumberFormat(sel.value==="INR"?"en-IN":"en-US",{minimumFractionDigits:c.digits,maximumFractionDigits:c.digits}).format(n)+" / month"})}sel.addEventListener("change",update);update()}
 document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll("[data-year]").forEach(e=>e.textContent=new Date().getFullYear());setupEnquiry("enquiryForm");setupEnquiry("trialForm");setupEnquiry("registrationForm");setupCurrency()});
+
+// Accessible count-up animation for the homepage statistics.
+function animateCounters(){
+  const counters=document.querySelectorAll("[data-count]");
+  if(!counters.length)return;
+  const run=el=>{
+    if(el.dataset.done==="1")return;
+    el.dataset.done="1";
+    const target=Number(el.dataset.count)||0;
+    const duration=1100;
+    const start=performance.now();
+    function frame(now){
+      const progress=Math.min((now-start)/duration,1);
+      const eased=1-Math.pow(1-progress,3);
+      el.textContent=String(Math.round(target*eased));
+      if(progress<1)requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  };
+  if("IntersectionObserver" in window){
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+      if(entry.isIntersecting){run(entry.target);observer.unobserve(entry.target)}
+    }),{threshold:.5});
+    counters.forEach(el=>observer.observe(el));
+  }else counters.forEach(run);
+}
+document.addEventListener("DOMContentLoaded",animateCounters);
