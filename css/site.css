@@ -93,3 +93,20 @@
  .home-photo-gallery img{height:145px}
  .hero-pill{font-size:10px}
 }
+
+/* Custom minimal circular cursor – desktop pointer devices only */
+.cursor-ring,.cursor-dot{position:fixed;left:0;top:0;pointer-events:none;z-index:99999;opacity:0;will-change:transform;transition:opacity .2s ease}
+.cursor-ring{width:28px;height:28px;border:1.5px solid var(--gold2);border-radius:50%;margin:-14px 0 0 -14px;box-shadow:0 0 12px #d4af3730;transition:opacity .2s ease,width .2s ease,height .2s ease,margin .2s ease,border-color .2s ease,background .2s ease}
+.cursor-dot{width:5px;height:5px;border-radius:50%;background:var(--gold2);margin:-2.5px 0 0 -2.5px;transition:opacity .2s ease,transform .08s linear}
+body.custom-cursor,.custom-cursor a,.custom-cursor button,.custom-cursor summary,.custom-cursor [role="button"]{cursor:none!important}
+.custom-cursor input,.custom-cursor textarea{cursor:text!important}
+.cursor-ring.is-visible,.cursor-dot.is-visible{opacity:1}
+.cursor-ring.is-hover{width:42px;height:42px;margin:-21px 0 0 -21px;background:#d4af3715;border-color:#f4d77d}
+.cursor-ring.is-down{width:22px;height:22px;margin:-11px 0 0 -11px;background:#d4af3730}
+@media (hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){
+ .cursor-ring,.cursor-dot{display:none!important}
+ body.custom-cursor,body.custom-cursor *{cursor:auto!important}
+}
+
+/* Final header cleanup: no announcement/top information strip */
+.topline{display:none!important;height:0!important;margin:0!important;padding:0!important;border:0!important}

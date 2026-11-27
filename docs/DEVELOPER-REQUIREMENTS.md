@@ -1,7 +1,7 @@
 # Developer Requirements Document (DRD)
 
 ## 1. Product
-Al-Bidayah Quran Kareem is an online Quran academy. The public site and academy management platform should support students worldwide. Launch language: English only.
+Al-Bidayah Quran Academy is an online Quran academy. The public site and academy management platform should support students worldwide. Launch language: English only.
 
 ## 2. Brand and location
 - Tagline: Learn the Quran. Build a Lifelong Connection.

@@ -1,9 +1,9 @@
-# Al-Bidayah Quran Kareem – Website Project
+# Al-Bidayah Quran Academy – Website Project
 
 English-only, responsive, multi-page website foundation based on the supplied academy plan and visual references.
 
 ## Brand and operating decisions
-- Name: Al-Bidayah Quran Kareem
+- Name: Al-Bidayah Quran Academy
 - Tagline: Learn the Quran. Build a Lifelong Connection.
 - Main office: Calicut, Kerala, India
 - Qatar: Coming Soon (not an operating branch)
@@ -51,3 +51,7 @@ For production, configure a custom domain, HTTPS, privacy notice, cookie policy 
 - Added a global online academy pill and retained the split hero layout, four feature cards and animated statistics.
 - Homepage now includes a 12-photo Quran learning gallery using the existing academy image library.
 - Existing course and inner-page galleries remain in place.
+
+
+## Approved academy name
+The official displayed academy name is **Al-Bidayah Quran Academy**, matching the supplied logo artwork. Header branding and website text have been updated accordingly.
