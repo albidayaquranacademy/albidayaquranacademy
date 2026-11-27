@@ -45,3 +45,9 @@ For production, configure a custom domain, HTTPS, privacy notice, cookie policy 
 - Added image galleries and supporting photographs across the homepage, About, course detail, teacher, pricing, registration, FAQ, contact and portal pages using the existing academy image assets.
 - Homepage featured course row remains exactly three cards; full catalogue remains on the Courses page.
 - Homepage counters animate to 1,000+, 45+, 10 and 18+ as requested. Confirm that these are current, accurate academy figures before publishing them as factual public claims.
+
+## Quran-focused homepage visual refresh
+- Hero background now uses the existing Quran hero photograph with a blue/navy overlay inspired by the supplied reference.
+- Added a global online academy pill and retained the split hero layout, four feature cards and animated statistics.
+- Homepage now includes a 12-photo Quran learning gallery using the existing academy image library.
+- Existing course and inner-page galleries remain in place.

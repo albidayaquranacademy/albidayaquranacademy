@@ -49,3 +49,47 @@
 .hero-stats .stat strong[data-count]{font-variant-numeric:tabular-nums;white-space:nowrap}
 @media(max-width:900px){.photo-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}.inline-photo-banner{grid-template-columns:1fr 1.2fr}}
 @media(max-width:600px){.photo-gallery,.teacher-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.photo-gallery img,.teacher-gallery img{height:145px}.compact-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}.compact-gallery img{height:100px}.inline-photo-banner{grid-template-columns:1fr}.inline-photo-banner img{height:180px}}
+
+/* Quran academy visual refresh – hero inspired by the supplied reference */
+.hero{
+  background-image:
+    linear-gradient(90deg,rgba(15,37,61,.30) 0%,rgba(15,37,61,.52) 42%,rgba(12,28,46,.91) 100%),
+    url('../assets/hero-bg.jpg');
+  background-position:center,left center;
+  background-size:cover,cover;
+  background-repeat:no-repeat;
+  min-height:610px;
+}
+.hero:before{
+  background:linear-gradient(180deg,rgba(35,67,99,.10),rgba(8,24,42,.25));
+}
+.hero-grid{padding-top:68px;padding-bottom:24px}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 13px;border:1px solid #ffffff42;border-radius:30px;
+  background:#ffffff18;color:#e4edf7;font-size:11px;margin-bottom:12px;
+  backdrop-filter:blur(8px)
+}
+.hero-pill span{width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px #d4af3730}
+.hero-pill b{color:#fff}
+.hero-copy h1{max-width:640px;text-shadow:0 2px 22px #06142680}
+.hero-copy p{max-width:600px;color:#e0e9f3}
+.hero-features .feature-tile{background:rgba(15,34,54,.91);border-color:#ffffff28;backdrop-filter:blur(10px)}
+.hero-stats{border-top-color:#ffffff42}
+.image-gallery-section{background:#101f31}
+.home-photo-gallery{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.home-photo-gallery figure{box-shadow:0 12px 30px #0003}
+.home-photo-gallery img{height:190px}
+.home-photo-gallery figcaption{font-size:12px;padding:12px 14px}
+@media(max-width:900px){
+ .hero{min-height:auto;background-position:center,left center}
+ .home-photo-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .home-photo-gallery img{height:165px}
+}
+@media(max-width:600px){
+ .hero{background-image:linear-gradient(90deg,rgba(13,29,47,.70),rgba(13,29,47,.82)),url('../assets/hero-bg.jpg');background-position:center,left center}
+ .hero-grid{padding-top:45px}
+ .home-photo-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .home-photo-gallery img{height:145px}
+ .hero-pill{font-size:10px}
+}
