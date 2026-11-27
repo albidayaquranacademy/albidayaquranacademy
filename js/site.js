@@ -15,12 +15,15 @@ function animateCounters(){
     if(el.dataset.done==="1")return;
     el.dataset.done="1";
     const target=Number(el.dataset.count)||0;
-    const duration=1100;
-    const start=performance.now();
+    const startValue=Number(el.dataset.start)||0;
+    const suffix=el.dataset.suffix||"";
+    const duration=1500;
+    const startTime=performance.now();
     function frame(now){
-      const progress=Math.min((now-start)/duration,1);
+      const progress=Math.min((now-startTime)/duration,1);
       const eased=1-Math.pow(1-progress,3);
-      el.textContent=String(Math.round(target*eased));
+      const current=Math.round(startValue+(target-startValue)*eased);
+      el.textContent=current.toLocaleString("en-US")+suffix;
       if(progress<1)requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
@@ -28,7 +31,7 @@ function animateCounters(){
   if("IntersectionObserver" in window){
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
       if(entry.isIntersecting){run(entry.target);observer.unobserve(entry.target)}
-    }),{threshold:.5});
+    }),{threshold:.45});
     counters.forEach(el=>observer.observe(el));
   }else counters.forEach(run);
 }

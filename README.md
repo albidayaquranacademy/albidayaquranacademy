@@ -40,3 +40,8 @@ Do not enter real child/student information or passwords into any placeholder po
 Upload the complete folder contents to the GitHub repository root, preserving `assets/`, `css/`, `js/`, `courses/`, and `docs/`. Do not upload only `index.html`, because the new page depends on these folders. If the repository already contains these asset files, replace only matching assets when needed; retain Git history. Vercel should deploy from the repository root as a static site.
 
 For production, configure a custom domain, HTTPS, privacy notice, cookie policy if applicable, and a secure backend before enabling user accounts.
+
+## Final visual update
+- Added image galleries and supporting photographs across the homepage, About, course detail, teacher, pricing, registration, FAQ, contact and portal pages using the existing academy image assets.
+- Homepage featured course row remains exactly three cards; full catalogue remains on the Courses page.
+- Homepage counters animate to 1,000+, 45+, 10 and 18+ as requested. Confirm that these are current, accurate academy figures before publishing them as factual public claims.
